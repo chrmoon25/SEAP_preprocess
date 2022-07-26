@@ -1,0 +1,410 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="expires" CONTENT="-1">
+<link rel="icon" type="image/icon" href="/favicon.ico"/>
+<title>Login</title>
+<script language="JavaScript" src="/js/util.js"></script>
+<script language="JavaScript" src="/lang/footer.res"></script>
+<style type="text/css">
+a
+{
+color:#000000;
+cursor:hand;
+font-family:Arial;
+font-size:14px;
+text-decoration :none;
+}
+td
+{
+font-family:Arial;
+font-size:14px;
+}
+a:hover {
+color:#990000;
+}
+body
+{
+margin: 0 0 0 0;
+font-family:Arial;
+}
+.STYLE1 {font-size: 12px}
+.STYLE1 a{font-size: 12px}
+.STYLE1 a:link {
+color: #666666;
+text-decoration: none;
+}
+.STYLE1 a:visited {
+color: #666666;
+text-decoration: none;
+}
+.STYLE1 a:hover {
+text-decoration: none;
+}
+.STYLE1 a:active {
+text-decoration: none;
+}
+</style>
+<script language="JavaScript" type="text/javascript">
+var CopyrightTime = "2013-2015";
+var lang = 'en';
+if (lang == '')
+{
+lang = 'en';
+}
+var LoginTimes = 0;
+var Cookieflag = 0;
+var inittime = 0;
+var initcount = 0;
+var firmenu = 'Admin_0';
+var secmenu = 'Admin_0_0';
+var thirdmenu = 'Admin_0_0_0';
+var strCookie = document.cookie;
+function SubmitForm(type)
+{
+var Username = document.getElementById('txt_Username');
+var Password = document.getElementById('txt_Password');
+document.getElementById('loginleft').style.backgroundImage="url(/images/logclickleft.gif)";
+document.getElementById('loginmid0').style.backgroundImage="url(/images/logclickmid.gif)";
+document.getElementById('loginmid').style.backgroundImage="url(/images/logclickmid.gif)";
+document.getElementById('loginright').style.backgroundImage="url(/images/logclickright.gif)";
+if (Username.value == "")
+{
+if(lang == 'en')
+{
+alert("Account should not be empty.");
+}
+else if (lang == 'zh')
+{
+alert('ÓÃ»§Ãû²»ÄÜÎª¿Õ¡£')
+}
+document.getElementById('loginleft').style.backgroundImage="url(/images/loginitleftt.gif)";
+document.getElementById('loginmid0').style.backgroundImage="url(/images/lognitmid.gif)";
+document.getElementById('loginmid').style.backgroundImage="url(/images/lognitmid.gif)";
+document.getElementById('loginright').style.backgroundImage="url(/images/loginitright.gif)";
+if (type)
+return false;
+else
+return;
+}
+if (Password.value == "")
+{
+if(lang == 'en')
+{
+alert("Password should not be empty.");
+}
+else if (lang == 'zh')
+{
+alert('ÃÜÂë²»ÄÜÎª¿Õ¡£')
+}
+document.getElementById('loginleft').style.backgroundImage="url(/images/loginitleftt.gif)";
+document.getElementById('loginmid0').style.backgroundImage="url(/images/lognitmid.gif)";
+document.getElementById('loginmid').style.backgroundImage="url(/images/lognitmid.gif)";
+document.getElementById('loginright').style.backgroundImage="url(/images/loginitright.gif)";
+if (type)
+return false;
+else
+return;
+}
+var cookie = "FirstMenu=" + firmenu + "; path=/";
+document.cookie = cookie;
+var cookie = "SecondMenu=" + secmenu + "; path=/";
+document.cookie = cookie;
+var cookie = "ThirdMenu=" + thirdmenu + "; path=/";
+document.cookie = cookie;
+var date = new Date();
+date.setTime(date.getTime()+(365*24*60*60*1000));
+var expires = "; expires="+date.toGMTString();
+if (lang == 'en')
+{
+var cookie = "Language=en" + expires + "; path=/";
+}
+else if (lang == 'zh')
+{
+var cookie = "Language=zh" + expires + "; path=/";
+}
+document.cookie = cookie;
+var form = new webSubmitForm();
+form.setAction('/index/login.cgi');
+form.addParameter('Username', Username.value);
+form.addParameter('Password', base64encode(SHA256(Password.value)));
+form.submit();
+return true;
+}
+function get_cookie (cookie_name)
+{
+var results = document.cookie.match ( '(^|;) ?' + cookie_name + '=([^;]*)(;|$)' );
+if (results)
+{
+return (results[2]);
+}
+else
+{
+return "";
+}
+}
+function LoadFrame()
+{
+document.getElementById('txt_Username').focus();
+}
+function onCancel()
+{
+var Username = document.getElementById('txt_Username');
+var Password = document.getElementById('txt_Password');
+Username.value = '';
+Password.value = '';
+}
+function onHandleKeyDown(e)
+{
+var key = 0;
+if (window.event)
+key = window.event.keyCode;
+else if (e)
+key = e.which ;
+if (key == 13)
+{
+return SubmitForm(1);
+}
+return true;
+}
+document.onkeypress = onHandleKeyDown;
+</script>
+</head>
+<body onLoad="LoadFrame();">
+<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td height="61" valign="top">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" height="100%">
+<tr>
+<td width="162" height="68">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" height="100%" background="/images/logoback.gif" >
+<tr>
+<td align="center"> <img src="/images/logo.gif"   border="0" style="position:relative; top:0px"></img> </td>
+</tr>
+</table>
+</td>
+<td width="18" background="/images/leftblock.gif">&nbsp;</td>
+<td background="/images/midblock.gif" valign="top">
+<table height="61" border="0">
+<tr>
+<td height="26" colspan="5"></td>
+</tr>
+<tr>
+<td width="30" height="27">&nbsp;</td>
+<td width="504" valign="top" id="igd_title">
+<script language="JavaScript" type="text/javascript">
+if (lang == 'en')
+{
+document.write('<span><font color="#006699" style="font-family:Arial;font-size:20px;">300Mbps Wireless ADSL2+ Router</font></span>');
+}
+else if (lang == 'zh')
+{
+document.write('<span><font color="#006699" style="font-family:Arial;font-size:28px;"><b>¼Ò Í¥ Íø ¹Ø</b></font></span>');
+}
+</script>
+</td>
+<td width="117" valign="top">&nbsp;</a></td>
+<td width="60" valign="top">&nbsp;</td>
+<td width="95" valign="top">&nbsp;</td>
+</tr>
+<tr> </tr>
+</table>
+</td>
+<td width="19" background="/images/rightblock.gif">&nbsp;</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td height="510" background="/images/loginbackground.gif" align="center">
+<table height="225" width="292" cellpadding="0" cellspacing="0" border="0" style="position:relative;top:-30px;">
+<tr>
+<td>
+<table height="225" width="405" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td width="6" background="/images/logleft.gif" ></td>
+<td width="392" background="/images/logmid.gif">
+<table width="83%" height="101" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td width="100" align="right"><img src="/images/username.gif" width="41" height="37"></img></td>
+<td width="136" align="center" id="usernameId">
+<script language="JavaScript" type="text/javascript">
+if (lang == 'en')
+{
+document.write('&nbsp;Username:');
+}
+else if (lang == 'zh')
+{
+document.write('&nbsp;ÓÃ»§Ãû:');
+}
+</script>
+</td>
+<td width="221" align="center">
+<input id="txt_Username" type="text" name="Username" style="height:22px; width:155px;font-family:Arial;">
+</td>
+</tr>
+<tr><td height="10"></td></tr>
+<tr>
+<td align="right"><img src="/images/password.gif" width="41" height="37"></img></td>
+<td width="136" align="center" id="passwordId">
+<script language="JavaScript" type="text/javascript">
+if (lang == 'en')
+{
+document.write('&nbsp;Password:');
+}
+else if (lang == 'zh')
+{
+document.write('&nbsp;ÃÜÂë:');
+}
+</script>
+</td>
+<td align="center">
+<input id="txt_Password" name="Password" type="password" style="height:22px; width:155px; font-family:Arial;" autocomplete="off" onkeydown="fncKeyStop(event);" onpaste="return false;" oncontextmenu="return false;">
+</td>
+</tr>
+<tr><td></td></tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" >
+<tr><td height="10"></td></tr>
+<tr>
+<td width="2%">
+<td width="71" height="32" align="right"><img src="/images/warn.gif" width="25" height="20"></img> </td>
+<td width="6" align="left"></td>
+<td width="325" align="left" id="erroinfoId" class="newclass">
+<script language="JavaScript" type="text/javascript">
+if (lang == 'zh')
+{
+if(Cookieflag == 1)
+{
+document.write('<font color="#FF3300">µÇÂ¼Ê§°Ü£ºä¯ÀÀÆ÷²»Ö§³ÖCookie¡£');
+}
+else if (Cookieflag == 2)
+{
+getElement('erroinfoId').innerHTML = '<font color="#FF3300">µÇÂ¼Ê§°Ü£ºÄúÒÑÔÚÏß£¬ÇëÍË³öºóÔÙµÇÂ¼¡£';
+}
+else
+{
+if (LoginTimes == 0)
+{
+document.write('<font color="#0000FF">ÇëÊäÈëÓÃ»§Ãû¡¢ÃÜÂë¡£');
+}
+else if (LoginTimes == 1)
+{
+document.write('<font color="#FF3300">ÓÃ»§Ãû»òÃÜÂë´íÎó£¬ÄúÒÑ¾­µÇÂ¼Ê§°Ü1´Î¡£');
+}
+else if (LoginTimes == 2)
+{
+document.write('<font color="#FF3300">ÓÃ»§Ãû»òÃÜÂë´íÎó£¬ÄúÒÑ¾­µÇÂ¼Ê§°Ü2´Î¡£');
+}
+else if (LoginTimes >= 3)
+{
+document.write('<font color="#FF3300">ÄúÒÑ¾­µÇÂ¼Ê§°Ü' + 3 + '´Î¡£ÇëÒ»·ÖÖÓºóÔÙµÇÂ¼¡£')
+}
+}
+}
+else if (lang == 'en')
+{
+if(Cookieflag == 1)
+{
+document.write('<font color="#FF3300">Login Failure: Browser did not support Cookie. Please enable Cookie.');
+}
+else if (Cookieflag == 2)
+{
+getElement('erroinfoId').innerHTML = '<font color="#FF3300">Login Failure: Duplicated Login. Please try later.';
+}
+else
+{
+if (LoginTimes == 0)
+{
+document.write('<font color="#0000FF">Please enter your username and password.')
+}
+else if (LoginTimes == 1)
+{
+document.write('<font color="#FF3300">Invalid username or password. You have failed to login 1 time.')
+}
+else if (LoginTimes == 2)
+{
+document.write('<font color="#FF3300">Invalid username or password. You have failed to login 2 times.')
+}
+else if (LoginTimes >= 3)
+{
+document.write('<font color="#FF3300">You have failed to login ' + 3 + ' times. Please login again after one minute.')
+}
+}
+}
+</script>                            </td>
+</tr>
+</table>
+</td>
+<td width="7" background="/images/logright.gif" ></td>
+</tr>
+</table></td>
+</tr>
+<tr><td height="30"></td></tr>
+<tr>
+<td>
+<table height="35" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-color:#efefef;">
+<tr>
+<td width="50">&nbsp;  </td>
+<td  id="loginleft" height="38" width="6"  background="/images/loginitleftt.gif"></td>
+<td id="loginmid0" width="60" align="center"  background="/images/lognitmid.gif"><img src="/images/login.gif" width="37" height="32"></img></td>
+<td id="loginmid" width="55" align="left"  background="/images/lognitmid.gif"><a id="btnLogin" href="javascript:SubmitForm(0);">
+<script language="JavaScript" type="text/javascript">
+if (lang == 'en')
+{
+document.write('Login');
+}
+else if (lang == 'zh')
+{
+document.write('µÇÂ¼');
+}
+</script>
+</a>
+</td>
+<td  id="loginright" height="38" width="6"  background="/images/loginitright.gif"></td>
+<td width="50">&nbsp;  </td>
+<td  id="cancelleft" height="38" width="6" background="/images/loginitleftt.gif"></td>
+<td  id="cancelmid0" width="55" align="center"  background="/images/lognitmid.gif"><img src="/images/cancel.gif" width="37" height="32" onClick="onCancel();"></img></td>
+<td  id="cancelmid" height="38"  width="60"  background="/images/lognitmid.gif" align="center"><a href="#"  onClick="onCancel();" id="btnCancel">
+<script language="JavaScript" type="text/javascript">
+if (lang == 'en')
+{
+document.write('Cancel');
+}
+else if (lang == 'zh')
+{
+document.write('È¡Ïû');
+}
+</script>
+</a>
+</td>
+<td  id="cancelright" height="38" width="6"  background="/images/loginitright.gif"></td>
+<td width="51">&nbsp;  </td>
+</tr>
+</table></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td style="background-color:#d1d1d1" valign="bottom">
+<div align="center" class="STYLE1">
+<script language="JavaScript" type="text/javascript">
+document.write(gVarCopyright1);
+document.write(CopyrightTime);
+document.write(gVarCopyright2);
+document.write('<a href="/html/copyright.html" target="_blank">');
+document.write(gVarCopyright3);
+document.write('</a>');
+document.write(gVarCopyright4);
+document.write('&nbsp;');
+document.write('<a href="/html/privacypolicy.html" target="_blank">');
+document.write(gVarPrivacy);
+document.write('</a>');
+</script>
+</div>
+</td>
+</tr>
+</table>
+</body>
+</html>
